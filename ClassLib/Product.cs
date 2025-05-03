@@ -168,6 +168,13 @@
             System.Console.WriteLine("In  parameter modifier executed");
         }
 
+        public void InParameterModifier2(in Product val)
+        {
+            //  val = new Product("Stylish tv"); //parameter modifier of "in" type can't be modified(can't assign new object to it)
+            val.name = "rolex";//existing object value's can be modified 
+            System.Console.WriteLine("In  parameter modifier executed");
+        }
+
 
         public static void ParamsParameterModifier(params string[] products)
         {
@@ -176,8 +183,7 @@
                 System.Console.WriteLine(product+" "+product.Length);
             }
         }
-
-      
+   
         public static void DisplayMarks(double cost1,double cost2)
         {
             System.Console.WriteLine("Avg cost of :  "+cost1+" and "+cost2+" are "+GetAvgCost());//local function

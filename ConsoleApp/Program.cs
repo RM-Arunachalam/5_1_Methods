@@ -51,7 +51,7 @@ class Sample
 
         System.Console.WriteLine();
         System.Console.WriteLine("*******named arguments*****:");
-        mobile.CalculateTax(perc: 1);//improves readbility
+        mobile.CalculatedTax(perc: 1);//improves readability
         System.Console.WriteLine("calculated tax for mobile:" + mobile.tax);//200
 
         System.Console.WriteLine();
@@ -66,31 +66,35 @@ class Sample
         System.Console.WriteLine();
         System.Console.WriteLine("***Parameter Modifier-Default***");
         int a=9;
-        System.Console.WriteLine("Before modified 'A' value will be:" + a);
+        System.Console.WriteLine("Before modified 'A' value will be:" + a);//9
         Watch.DefaultParameterModifier(a);
-        System.Console.WriteLine("After modified 'A' value will be:" + a);
+        System.Console.WriteLine("After modified 'A' value will be:" + a);//9
 
         System.Console.WriteLine();
         System.Console.WriteLine("***Parameter Modifier-Ref***");
         int b = 9;
-        System.Console.WriteLine("Before modified 'B' value will be:" + b);
+        System.Console.WriteLine("Before modified 'B' value will be:" + b);//9
         Watch.RefParameterModifier(ref b);
-        System.Console.WriteLine("After modified 'B' value will be:" + b);
+        System.Console.WriteLine("After modified 'B' value will be:" + b);//60
 
         System.Console.WriteLine();
         System.Console.WriteLine("***Parameter Modifier-Out***");
         int c ;
         System.Console.WriteLine("Before modified 'C' value is not initialized");
         Watch.OutParameterModifier(out c,out double c2);
-        System.Console.WriteLine("After modified 'C' value will be:" + c);
-        System.Console.WriteLine("'C2' value will be:" + c2);
+        System.Console.WriteLine("After modified 'C' value will be:" + c);//65
+        System.Console.WriteLine("'C2' value will be:" + c2);//89
 
         System.Console.WriteLine();
         System.Console.WriteLine("***Parameter Modifier-In***");
         int d = 9;
-        System.Console.WriteLine("Before modified 'D' value will be:" + d);
+        System.Console.WriteLine("Before modified 'D' value will be:" + d);//9
         Watch.InParameterModifier(in d);
-        System.Console.WriteLine("After modified 'D' value will be:" + d);
+        System.Console.WriteLine("After modified 'D' value will be:" + d);//9
+        Watch.name = "titan";
+        System.Console.WriteLine("Before modified watch brand name:" + Watch.name);//titan
+        Watch.InParameterModifier2(in Watch);
+        System.Console.WriteLine("After modified watch brand name:" + Watch.name);//rolex
 
         System.Console.WriteLine();
         System.Console.WriteLine("printing products list 1:");
