@@ -20,8 +20,7 @@
         //manipulating static fields through static method
         public static void SetAvailability(string value)
         {
-            availability = value;
-           
+            availability = value;         
         }
 
         //manipulating static fields through static method
@@ -32,7 +31,7 @@
 
         public void SetProductCode(string productCode)
         {
-            //this keyword-accessible only in instance methods
+            //this keyword-(refers to current object,which method has invoked this method)=>accessible only in instance methods
             this.productCode = productCode;//accessing current object field
             this.DummyInstanceMethod();//calling other instance method
         }
@@ -63,32 +62,41 @@
             return _productId;
         }
 
-        public double ApplyDiscount(double discount)
+        public double ApplyDiscount(double discount)//parameter
         {
-            return CalDiscount(discount); //calling private method 
+            double FinalCost;//local variable
+            double discountAmount= CalDiscount(discount); //calling private method 
+            FinalCost = cost - discountAmount;
+            return FinalCost;
         }
 
         //private method
-        private double CalDiscount(double disc)//parameter
+        private double CalDiscount(double disc)
         {
-            double FinalCost;//local variable
+            
             discount = (cost * disc) / 100;
-            FinalCost = cost - discount;
-            return FinalCost;
+            return discount;
         }
 
         //instance method
         public void DummyInstanceMethod()
         {
-            System.Console.WriteLine("Product code was set");
+            System.Console.WriteLine("Dummy Instance method");
             //default online mode 
             availability = "offline";//accessing static field inside instance method
+            StaticMethod();//accessing static method inside instance method
         }
 
         //instance method
         public void InstanceMethod()
         {
-            System.Console.WriteLine("called Instance method->"+name);
+            System.Console.WriteLine("executed Instance method->"+name);
+        }
+
+        //static method
+        public static void StaticMethod()
+        {
+            System.Console.WriteLine("Static method executed");
         }
 
         //Passing object ref as arguments
@@ -113,7 +121,7 @@
             tax = t;
         }
 
-        public void CalculateTax(double perc=5)//default argument(should be used in first)
+        public void CalculatedTax(double perc=5)//default argument(should be used in first)
         {
             double t;//local variable
             if (cost > 50000)

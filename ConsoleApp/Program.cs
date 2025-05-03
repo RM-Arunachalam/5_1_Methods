@@ -4,7 +4,8 @@ class Sample
 {
     public static void Main(string[] args)
     {
-        Product laptop = new Product("A quality laptop");
+        //inside static method(main method)->accessing instance fields and methods by creating object
+        Product laptop = new Product("A quality laptop"); 
         laptop.cost = 80000;
         laptop.name = "HP";
         laptop.quantityInStock = 2;
@@ -19,11 +20,12 @@ class Sample
 
         Console.WriteLine("Finalcost:"+laptop.ApplyDiscount(5));//76000
         Console.WriteLine("discount amount:" + laptop.GetDiscount());//4000
-
+   
+        Product.SetAvailability("Online");
+        System.Console.WriteLine("laptop is available in "+Product.GetAvailability()+" mode");// Online mode
         laptop.SetProductCode("PD1876");
-        System.Console.WriteLine("laptop product code retrieved:"+laptop.GetproductCode());//PD1876
-       // Product.SetAvailability("Online");
-        System.Console.WriteLine("laptop is available in "+Product.GetAvailability()+" mode");
+        System.Console.WriteLine("laptop product code retrieved:" + laptop.GetproductCode());//PD1876
+        System.Console.WriteLine("laptop is available in " + Product.GetAvailability() + " mode");// Offline mode
         laptop.InstanceMethod();//calling instance method
 
         System.Console.WriteLine();
@@ -36,21 +38,21 @@ class Sample
         mobile.InstanceMethod();//calling instance method
 
         System.Console.WriteLine();
+        System.Console.Write("*******Passing object ref as arguments*****:");
+        System.Console.WriteLine("\nbefore modification of mobile name->" + mobile.name);//Iphone
+        int totalQuantityInStock = Product.GetTotalQuantity(mobile, laptop);
+        System.Console.WriteLine(totalQuantityInStock);//3
+        System.Console.Write("after modification of mobile name->" + mobile.name);//Samsung
+
+        System.Console.WriteLine();
         System.Console.WriteLine("*******default arguments*****:");
-        mobile.CalculateTax();//default argument
+        mobile.CalculatedTax();//default argument
         System.Console.WriteLine("calculated tax for mobile:"+mobile.tax);//1000
 
         System.Console.WriteLine();
         System.Console.WriteLine("*******named arguments*****:");
         mobile.CalculateTax(perc: 1);//improves readbility
         System.Console.WriteLine("calculated tax for mobile:" + mobile.tax);//200
-
-        System.Console.WriteLine();
-        System.Console.Write("*******Passing object ref as arguments*****:");
-          System.Console.WriteLine("\nbefore modification of mobile name->" + mobile.name);//Iphone
-        int totalQuantityInStock=Product.GetTotalQuantity(mobile,laptop);
-        System.Console.WriteLine(totalQuantityInStock);//3
-        System.Console.Write("after modification of mobile name->" + mobile.name);//Samsung
 
         System.Console.WriteLine();
         System.Console.WriteLine("****MethodOverloading***");
