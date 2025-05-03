@@ -37,25 +37,21 @@ class Sample
         System.Console.WriteLine("mobile is available in " + Product.GetAvailability() + " mode");
         mobile.InstanceMethod();//calling instance method
 
-        System.Console.WriteLine();
-        System.Console.Write("*******Passing object ref as arguments*****:");
+        System.Console.Write("\n*******Passing object ref as arguments*****:");
         System.Console.WriteLine("\nbefore modification of mobile name->" + mobile.name);//Iphone
         int totalQuantityInStock = Product.GetTotalQuantity(mobile, laptop);
         System.Console.WriteLine(totalQuantityInStock);//3
         System.Console.Write("after modification of mobile name->" + mobile.name);//Samsung
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("*******default arguments*****:");
+        System.Console.WriteLine("\n*******default arguments*****:");
         mobile.CalculatedTax();//default argument
         System.Console.WriteLine("calculated tax for mobile:"+mobile.tax);//1000
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("*******named arguments*****:");
+        System.Console.WriteLine("\n*******named arguments*****:");
         mobile.CalculatedTax(perc: 1);//improves readability
         System.Console.WriteLine("calculated tax for mobile:" + mobile.tax);//200
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("****MethodOverloading***");
+        System.Console.WriteLine("\n****MethodOverloading***");
         Product Watch = new Product("Stunning watch");
         System.Console.WriteLine("calculate tax for watch->" + Watch.CalculateTax(10000, 10));//1000
         System.Console.WriteLine("Tax for watch:" + Watch.tax);//1000
@@ -63,30 +59,26 @@ class Sample
         Watch.CalculateTax();//50
         System.Console.WriteLine("Tax for watch:"+Watch.tax);//50
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("***Parameter Modifier-Default***");
+        System.Console.WriteLine("\n***Parameter Modifier-Default***");
         int a=9;
         System.Console.WriteLine("Before modified 'A' value will be:" + a);//9
         Watch.DefaultParameterModifier(a);
         System.Console.WriteLine("After modified 'A' value will be:" + a);//9
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("***Parameter Modifier-Ref***");
+        System.Console.WriteLine("\n***Parameter Modifier-Ref***");
         int b = 9;
         System.Console.WriteLine("Before modified 'B' value will be:" + b);//9
         Watch.RefParameterModifier(ref b);
         System.Console.WriteLine("After modified 'B' value will be:" + b);//60
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("***Parameter Modifier-Out***");
+        System.Console.WriteLine("\n***Parameter Modifier-Out***");
         int c ;
         System.Console.WriteLine("Before modified 'C' value is not initialized");
         Watch.OutParameterModifier(out c,out double c2);
         System.Console.WriteLine("After modified 'C' value will be:" + c);//65
         System.Console.WriteLine("'C2' value will be:" + c2);//89
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("***Parameter Modifier-In***");
+        System.Console.WriteLine("\n***Parameter Modifier-In***");
         int d = 9;
         System.Console.WriteLine("Before modified 'D' value will be:" + d);//9
         Watch.InParameterModifier(in d);
@@ -96,8 +88,7 @@ class Sample
         Watch.InParameterModifier2(in Watch);
         System.Console.WriteLine("After modified watch brand name:" + Watch.name);//rolex
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("printing products list 1:");
+        System.Console.WriteLine("\nprinting products list 1:");
         string[] productsList1 = { "toy", "sofa", "furniture" };
         Product.ParamsParameterModifier(productsList1);
         System.Console.WriteLine();
@@ -105,22 +96,14 @@ class Sample
         string[] productsList2 = { "bench", "chair", "tablet","keyboard" };
         Product.ParamsParameterModifier(productsList2);
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("local function::");
+        System.Console.WriteLine("\nlocal function::");
         Product.DisplayMarks(34, 35);//34.5
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("static local function::");
+        System.Console.WriteLine("\nstatic local function::");
         Product.DisplayMarks2(23, 24);//23.5
 
-        System.Console.WriteLine();
-        System.Console.WriteLine("Recursion::");
+        System.Console.WriteLine("\nRecursion::");
         System.Console.WriteLine("Factorial of 5 is "+Product.Factorial(5));//120
         System.Console.WriteLine("Factorial of 6 is " + Product.Factorial(6));//720
-
-
-
-
-
     }
 }
