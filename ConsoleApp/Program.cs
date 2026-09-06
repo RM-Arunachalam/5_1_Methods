@@ -15,6 +15,7 @@ class Sample
         Console.WriteLine("Laptop prod id->" + laptop.GetProductId());//87
         Console.WriteLine(laptop.GetDescription());//A quality laptop
 
+        Console.WriteLine("laptop product tax:" + laptop.tax);//0
         laptop.CalculateTax();//calling instance method with current object
         Console.WriteLine("laptop product tax:" + laptop.tax);//8000
 
@@ -34,7 +35,7 @@ class Sample
         mobile.name = "Iphone";
         mobile.quantityInStock = 1;
         Product.SetAvailability("Offline");
-        System.Console.WriteLine("mobile is available in " + Product.GetAvailability() + " mode");
+        System.Console.WriteLine("mobile is available in " + Product.GetAvailability() + " mode");//Offline mode
         mobile.InstanceMethod();//calling instance method
 
         System.Console.Write("\n*******Passing object ref as arguments*****:");
@@ -46,18 +47,21 @@ class Sample
         System.Console.WriteLine("\n*******default arguments*****:");
         mobile.CalculatedTax();//default argument
         System.Console.WriteLine("calculated tax for mobile:"+mobile.tax);//1000
+        mobile.CalculatedTax(10);//overriding default argument
+        System.Console.WriteLine("calculated tax for mobile:" + mobile.tax);//2000
 
         System.Console.WriteLine("\n*******named arguments*****:");
-        mobile.CalculatedTax(perc: 1);//improves readability
-        System.Console.WriteLine("calculated tax for mobile:" + mobile.tax);//200
+        mobile.CalculatedTaxx(percent: 50);//improves readability(useful when method has many parameters especially Reference variables)
+        System.Console.WriteLine("calculated tax for mobile:" + mobile.tax);//10000
 
         System.Console.WriteLine("\n****MethodOverloading***");
         Product Watch = new Product("Stunning watch");
+        Watch.cost = 10000;
+        Watch.CalculateTax();//500
+        System.Console.WriteLine("Tax for watch:" + Watch.tax);//500
         System.Console.WriteLine("calculate tax for watch->" + Watch.CalculateTax(10000, 10));//1000
         System.Console.WriteLine("Tax for watch:" + Watch.tax);//1000
-        Watch.cost = 1000;
-        Watch.CalculateTax();//50
-        System.Console.WriteLine("Tax for watch:"+Watch.tax);//50
+        
 
         System.Console.WriteLine("\n***Parameter Modifier-Default***");
         int a=9;
@@ -88,7 +92,7 @@ class Sample
         Watch.InParameterModifier2(in Watch);
         System.Console.WriteLine("After modified watch brand name:" + Watch.name);//rolex
 
-        System.Console.WriteLine("\nprinting products list 1:");
+    /*    System.Console.WriteLine("\nprinting products list 1:");
         string[] productsList1 = { "toy", "sofa", "furniture" };
         Product.ParamsParameterModifier(productsList1);
         System.Console.WriteLine();
@@ -105,5 +109,6 @@ class Sample
         System.Console.WriteLine("\nRecursion::");
         System.Console.WriteLine("Factorial of 5 is "+Product.Factorial(5));//120
         System.Console.WriteLine("Factorial of 6 is " + Product.Factorial(6));//720
+    */
     }
 }

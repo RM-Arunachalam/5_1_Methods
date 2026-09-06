@@ -18,9 +18,9 @@
         }
 
         //manipulating static fields through static method
-        public static void SetAvailability(string value)
+        public static void SetAvailability(string availability)
         {
-            availability = value;         
+            Product.availability = availability;
         }
 
         //manipulating static fields through static method
@@ -31,7 +31,8 @@
 
         public void SetProductCode(string productCode)
         {
-            //this keyword-(refers to current object,which method has invoked this method)=>accessible only in instance methods
+            //this keyword-(refers to current object,which method has invoked this method)=>accessible only inside instance methods
+            //used to differentiate between parameter and instance field with same name
             this.productCode = productCode;//accessing current object field
             this.DummyInstanceMethod();//calling other instance method
         }
@@ -51,7 +52,7 @@
             return description;
         }
 
-        public void SetProductID(int value)//public set method
+        public void SetProductID(int value)//public set method -doing validation before assigning value to private field
         {
             if (value >= 1 && value <= 100)
                 _productId = value;
@@ -70,7 +71,7 @@
             return FinalCost;
         }
 
-        //private method
+        //private method(how discount is calculated is hidden from outside world)
         private double CalDiscount(double disc)
         {
             
@@ -100,17 +101,16 @@
         }
 
         //Passing object ref as arguments
-        public static int GetTotalQuantity(Product prod1, Product prod2)
+        public static int GetTotalQuantity(Product prod1, Product prod2)//can be done with instance method 
         {
             prod1.name = "Samsung";
             return prod1.quantityInStock + prod2.quantityInStock;
         }
 
-
         public void CalculateTax() //instanceMethod
         {
             double t;//local variable
-            if (cost > 50000)
+            if (cost > 50000) //cost is instance field, accessible inside instance method
             {
                 t = (cost * 10) / 100;
             }
@@ -131,6 +131,20 @@
             else
             {
                 t = (cost *perc ) / 100;
+            }
+            tax = t;
+        }
+
+        public void CalculatedTaxx(double percent)//Named argument(all should be named arguments)
+        {
+            double t;//local variable
+            if (cost > 50000)
+            {
+                t = (cost * 10) / 100;
+            }
+            else
+            {
+                t = (cost * percent) / 100;
             }
             tax = t;
         }
